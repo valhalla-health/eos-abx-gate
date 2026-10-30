@@ -12,11 +12,12 @@ describe('QUESTIONS', () => {
     expect(labels).toContain('ต่ำกว่า 36.5 °C');
   });
 
-  // Pp, 2026-10-29: only continuous time counts, so the signs screen asks for 2 h without a break.
-  it('the signs screen asks for signs continuous for 2 h, and intermittent ones do not count', () => {
+  // Pp, 2026-10-29: only continuous time counts. Pp, 2026-10-30: only a sign still present at
+  // assessment counts, so a sign that has resolved is not ticked.
+  it('the signs screen asks for signs present at assessment and continuous for 2 h', () => {
     const q = QUESTIONS.equivParams;
-    expect(q.title).toBe('ตั้งแต่ออกจากห้องคลอด มีข้อไหนเป็นต่อเนื่องนาน 2 ชม. ขึ้นไป');
-    expect(q.hint).toBe('เลือกได้หลายข้อ เป็น ๆ หาย ๆ ไม่นับ');
+    expect(q.title).toBe('ตอนประเมิน มีข้อไหนที่ยังเป็นอยู่ และเป็นต่อเนื่องมา 2 ชม. ขึ้นไป');
+    expect(q.hint).toBe('เลือกได้หลายข้อ หายไปแล้วหรือเป็น ๆ หาย ๆ ไม่นับ');
     if (q.kind !== 'multi') throw new Error('equivParams must be multi-select');
     expect(q.options.map((o) => o.value)).toEqual(['hr', 'rr', 'temp', 'resp']);
     expect(q.noneLabel).toBe('ไม่มีเลย');

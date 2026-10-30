@@ -76,7 +76,7 @@ Privacy by construction: answers live in memory only and vanish on reload or res
    4. Apnea: a pause ≥20 s, or a shorter pause with HR <100 or a fall in SpO₂.
    5. Poor feeding: unable or refusing to feed for 2 feeds in a row, needing OG or IV. Yes → "staff เช็กเองแล้วหรือยัง". Not yet → screen "ให้ staff มาดูก่อน" with a back button; the item does not count until checked.
    6. Lethargy or irritability: only "staff ดูเองแล้วเห็นว่าซึมหรือกระสับกระส่ายจริง" counts. Same staff-check screen as above.
-5. **Equivocal parameters.** Only continuous time counts (Pp, 2026-10-29): a sign may be ticked only once it has lasted 2 h without a break, and a sign that came and went is not ticked. "ตั้งแต่ออกจากห้องคลอด มีข้อไหนเป็นต่อเนื่องนาน 2 ชม. ขึ้นไป", hint "เลือกได้หลายข้อ เป็น ๆ หาย ๆ ไม่นับ". A sign that lasted 2 h continuously and has since resolved is still ticked. Multi-select, at least one choice: HR ≥160 · RR ≥60 · T ≥38.0 °C or <36.5 °C · grunting, flaring or retraction without O₂ · ไม่มีเลย. Respiratory distress cannot be picked when step 3 found O₂ needed to keep SpO₂ >90% (counted there); O₂ given while SpO₂ was already >90% does not block it.
+5. **Equivocal parameters.** Only continuous time counts (Pp, 2026-10-29): a sign may be ticked only once it has lasted 2 h without a break, and a sign that came and went is not ticked. Only a sign still present at assessment counts (Pp, 2026-10-30): one that has resolved is not ticked, however long it lasted. O₂ and CPAP (step 3) still count since the delivery room. "ตอนประเมิน มีข้อไหนที่ยังเป็นอยู่ และเป็นต่อเนื่องมา 2 ชม. ขึ้นไป", hint "เลือกได้หลายข้อ หายไปแล้วหรือเป็น ๆ หาย ๆ ไม่นับ". Multi-select, at least one choice: HR ≥160 · RR ≥60 · T ≥38.0 °C or <36.5 °C · grunting, flaring or retraction without O₂ · ไม่มีเลย. Respiratory distress cannot be picked when step 3 found O₂ needed to keep SpO₂ >90% (counted there); O₂ given while SpO₂ was already >90% does not block it.
    - None → well-appearing (step 7), mark "re-check at 2 h": a sign that later lasts 2 h continuously means running the page again.
    - One → "ข้อนี้เป็นต่อเนื่องนานถึง 4 ชม. หรือยัง", with the ticked sign's name under the title (Pp, 2026-10-30): ถึงแล้ว / ยังไม่ถึง. ถึงแล้ว → equivocal. ยังไม่ถึง → well-appearing, mark "re-check at 4 h": the sign reaching 4 h continuously, or a second sign lasting 2 h continuously, means running the page again (Pp, 2026-10-30).
    - Two or more → equivocal at once, with no duration question.
@@ -140,6 +140,7 @@ Clinical illness at any step goes straight to the result. A baby who needed CPAP
 | | Time window | any time in the admission | CPG |
 | Equivocal | Parameters | HR ≥160 · RR ≥60 · T ≥38.0 °C or <36.5 °C · grunting, flaring or retraction without O₂ | Kaiser (HR, RR, high T); CPG (low T) |
 | | Duration | one sign continuous ≥4 h, or two or more continuous ≥2 h; intermittent episodes are not added (Pp, 2026-10-29; stricter than Kaiser's "abnormality can be intermittent") | Kaiser (thresholds); Pp (continuous time, exception to D6) |
+| | Time window | only signs still present at assessment; a resolved sign does not count, however long it lasted (Pp, 2026-10-30). Clinical illness keeps "any time in the admission". | Pp (exception to D6) |
 | Well-appearing | | none of the above | |
 
 "Drafted" thresholds were added in this SRS to make a CPG item measurable. Pp and the NICU team must
@@ -210,7 +211,7 @@ discharge.
 | Missing | Rule | Why |
 |---|---|---|
 | Any answer | No defaults. The next screen opens only after a tap. If the logic is ever asked for a well-appearing result with a sign, duration or CPG answer missing, it returns "answers incomplete, discuss with staff" instead of an action (the page itself never asks that early). | Forces the resident to look; a missing answer must not read as "no". |
-| GA days | "ไม่ทราบ" → the higher of the 0-day and 6-day risk | The GA term is convex (lowest near 39 wk), so the higher-risk end of the week depends on GA. |
+| GA days | "ไม่ทราบ" → the higher of the 0-day and 6-day risk (Pp confirmed, 2026-10-30) | The GA term is convex (lowest near 39 wk), so the higher-risk end of the week depends on GA. |
 | Maternal Tmax or ROM hours | Kaiser cannot run. Result: equivocal, "คำนวณ Kaiser ไม่ได้ ปรึกษา staff ก่อนตัดสินใจ", no action advised. | The model needs both; guessing either could hide a high risk. |
 | Antibiotic timing | "ไม่ทราบ" → counted as <2 h (no antibiotic credit) | Conservative. |
 | Fever not repeated | Counted as documented fever | In a well baby this leads only to serial assessment. |
@@ -220,8 +221,8 @@ discharge.
 ## 5. Summary text
 
 Plain text, no identifiers, ready to paste. The note repeats what the resident entered, so a wrong
-tap can be seen in the chart: the signs ticked (equivocal and well-appearing paths), each continuous
-for 2 h or more, and for one sign whether it reached 4 h ("RR ≥60 (reached 4 h)" or "(not yet 4 h)");
+tap can be seen in the chart: the signs ticked (equivocal and well-appearing paths), each present at
+assessment and continuous for 2 h or more, and for one sign whether it reached 4 h ("RR ≥60 (reached 4 h)" or "(not yet 4 h)");
 and, when Kaiser ran, one line of its inputs. When GA days were unknown, that line says the risk is the higher of the
 +0 and +6 day risk. The time stamp is taken when Copy is tapped, so a note copied later carries the
 time of the copy.
@@ -229,7 +230,7 @@ time of the copy.
 ```
 EOS ABX Gate v0.1.0 | 2026-10-29 14:32
 GA 40+0 wk | Category: Equivocal (two or more signs continuous for 2 h or more)
-Signs continuous ≥2 h since delivery room: RR ≥60, grunting/flaring/retraction without O2
+Signs present at assessment, continuous ≥2 h: RR ≥60, grunting/flaring/retraction without O2
 Kaiser inputs: GA 40+0 wk, Tmax 37.0 °C (98.60 °F), ROM 10 h, GBS neg, maternal abx none
 Kaiser 2024, incidence 0.5/1000: at birth 0.29/1000, after exam 1.06/1000
 Action (KCMH CPG): CBC + blood culture, VS q4h x 24 h, NO antibiotics
@@ -258,7 +259,7 @@ load-time check is skipped there too). `npm run test:full` builds the page and r
 - Intercept: the formula reproduces every row of Kaiser's intercept table to 0.1.
 - Classification: one test per row of 4.1, including both sides of every edge (HR 159/160, RR 59/60,
   T 36.4/36.5 and 37.9/38.0, O₂ just under and at 2 h since the delivery room, distress on O₂ not
-  counted as equivocal, a sign that lasted 4 h continuously and has resolved still counted, two or
+  counted as equivocal, a sign present at assessment and continuous for 4 h counted, two or
   more signs equivocal with no duration answer, no sign giving the 2 h re-check).
 - CPG branch: one test per leaf of the flowchart.
 - Missing data: one test per row of 4.4.

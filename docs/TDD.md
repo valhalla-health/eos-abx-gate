@@ -129,9 +129,10 @@ The same journey in words:
 2. **The engine walks the SRS order** and returns the first question without an answer. It never
    compares a clinical number: to know whether to stop, it asks `logic/classify` after every answer
    (is the baby below 35 weeks? is any clinical-illness item now yes? which duration question is
-   still open?). The respiratory and sign questions cover the whole time since the delivery room.
-3. **Two signs.** The signs screen asks "ตั้งแต่ออกจากห้องคลอด มีข้อไหนเป็นต่อเนื่องนาน 2 ชม. ขึ้นไป", so a
-   ticked sign has already lasted 2 h without a break. With RR ≥60 and grunting ticked, `classify` counts
+   still open?). The respiratory questions cover the whole time since the delivery room; the sign
+   question covers only signs still present at assessment (Pp, 2026-10-30).
+3. **Two signs.** The signs screen asks "ตอนประเมิน มีข้อไหนที่ยังเป็นอยู่ และเป็นต่อเนื่องมา 2 ชม. ขึ้นไป",
+   so a ticked sign is ongoing and has already lasted 2 h without a break. With RR ≥60 and grunting ticked, `classify` counts
    2 signs, which is equivocal with no duration question, and the engine turns to the Kaiser questions.
    One sign would bring one more screen, "ข้อนี้เป็นต่อเนื่องนานถึง 4 ชม. หรือยัง".
 4. **Kaiser questions.** GA days, maternal highest temperature, ROM hours, GBS, maternal antibiotics.
@@ -145,8 +146,8 @@ The same journey in words:
 7. **The screen and the note.** The screen opens with an amber banner, "ยังไม่ให้ ABX" over "CBC + H/C ·
    VS ทุก 4 ชม. นาน 24 ชม." (`logic/tone` gives cultureNoAbx the warn tone), then the pills "Equivocal"
    and "Kaiser 1.06/1000". The reason, the Kaiser rows and the note wait under ดูเหตุผลและข้อความ.
-   `logic/summary` writes the English note, which also repeats what was entered: "Signs continuous
-   ≥2 h since delivery room: RR ≥60, grunting/flaring/retraction without O2" and "Kaiser inputs: GA 40+0 wk,
+   `logic/summary` writes the English note, which also repeats what was entered: "Signs present at
+   assessment, continuous ≥2 h: RR ≥60, grunting/flaring/retraction without O2" and "Kaiser inputs: GA 40+0 wk,
    Tmax 37.0 °C (98.60 °F), ROM 10 h, GBS neg, maternal abx none". Both print the Kaiser numbers
    through the same formatter (`formatPer1000`), so the screen, the note and the action always
    agree. Tapping Copy writes the note again, so its time stamp is the time of the copy.

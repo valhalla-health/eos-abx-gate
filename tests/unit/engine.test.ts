@@ -66,7 +66,7 @@ describe('nextStep', () => {
     expect(nextStep({ ...a, oneParamGe4h: false })).toEqual(ask('fever'));
   });
 
-  it('a sign that lasted 4 h continuously and has resolved still makes the baby equivocal and goes to Kaiser', () => {
+  it('a sign present at assessment and continuous for 4 h makes the baby equivocal and goes to Kaiser', () => {
     expect(nextStep({ ...noIllness, equivParams: ['temp'], oneParamGe4h: true })).toEqual(ask('gaDays'));
   });
 

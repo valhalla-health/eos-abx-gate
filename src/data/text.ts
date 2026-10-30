@@ -52,8 +52,9 @@ export const SUMMARY = {
     motherSevere: 'mother severely ill (e.g. bacteremia, septic shock)',
   } satisfies Record<Exclude<Override['reason'], 'other'>, string>,
   // The input echo: what the resident ticked and what Kaiser was given (SRS section 5). Every sign
-  // ticked was continuous for 2 h or more; with one sign the line also says whether it reached 4 h.
-  signsLabel: 'Signs continuous ≥2 h since delivery room',
+  // ticked was present at assessment and continuous for 2 h or more; with one sign the line also says
+  // whether it reached 4 h.
+  signsLabel: 'Signs present at assessment, continuous ≥2 h',
   oneSign4h: { reached: 'reached 4 h', notYet: 'not yet 4 h' },
   signs: {
     hr: 'HR ≥160',

@@ -32,7 +32,7 @@ describe('summaryText', () => {
       [
         'EOS ABX Gate v0.1.0 | 2026-10-29 14:32',
         'GA 40+0 wk | Category: Equivocal (two or more signs continuous for 2 h or more)',
-        'Signs continuous ≥2 h since delivery room: RR ≥60, grunting/flaring/retraction without O2',
+        'Signs present at assessment, continuous ≥2 h: RR ≥60, grunting/flaring/retraction without O2',
         'Kaiser inputs: GA 40+0 wk, Tmax 37.0 °C (98.60 °F), ROM 10 h, GBS neg, maternal abx none',
         'Kaiser 2024, incidence 0.5/1000: at birth 0.29/1000, after exam 1.06/1000',
         'Action (KCMH CPG): CBC + blood culture, VS q4h x 24 h, NO antibiotics',
@@ -53,7 +53,7 @@ describe('summaryText', () => {
     expect(text).toContain('Action (KCMH CPG): admit Sick NB unit, CBC + blood culture, empiric antibiotics');
     expect(text).toContain('Override: staff decision | agreed by อ.ทดสอบ');
     // Signs are not asked on the clinical-illness path, and Kaiser did not run.
-    expect(text).not.toContain('Signs continuous');
+    expect(text).not.toContain('Signs present');
     expect(text).not.toContain('Kaiser inputs');
   });
 
@@ -71,7 +71,7 @@ describe('summaryText', () => {
     const text = summaryText(a, recommend(a, 0.5), now, 0.5);
     expect(text).toContain('GA 40+? wk | Category: Equivocal (one sign continuous for 4 h or more)');
     // One sign: the note also says whether it reached 4 h.
-    expect(text).toContain('Signs continuous ≥2 h since delivery room: RR ≥60 (reached 4 h)');
+    expect(text).toContain('Signs present at assessment, continuous ≥2 h: RR ≥60 (reached 4 h)');
     expect(text).toContain(
       'Kaiser inputs: GA 40+? wk (days unknown: risk is the higher of +0 and +6 d), Tmax 37.0 °C (98.60 °F), ROM 10 h, GBS neg, maternal abx none',
     );
@@ -91,7 +91,7 @@ describe('summaryText', () => {
     };
     const text = summaryText(a, recommend(a, 0.5), now, 0.5);
     // Two or more signs: no 4 h mark, since the 4 h question is not asked.
-    expect(text).toContain('Signs continuous ≥2 h since delivery room: HR ≥160, T ≥38.0 or <36.5 °C\n');
+    expect(text).toContain('Signs present at assessment, continuous ≥2 h: HR ≥160, T ≥38.0 or <36.5 °C\n');
     expect(text).toContain(
       'Kaiser inputs: GA 35+4 wk, Tmax 39.1 °C (102.38 °F), ROM 30.5 h, GBS pos, maternal abx broad-spectrum, ≥4 h before delivery',
     );
@@ -100,7 +100,7 @@ describe('summaryText', () => {
   it('a well baby with no sign prints "none" for the signs and gets the 2 h re-check', () => {
     const a: Answers = { ...noIllness, equivParams: [], fever: 'none', iapIndications: [] };
     const text = summaryText(a, recommend(a, 0.5), now, 0.5);
-    expect(text).toContain('Signs continuous ≥2 h since delivery room: none\n');
+    expect(text).toContain('Signs present at assessment, continuous ≥2 h: none\n');
     expect(text).toContain('Category: Well-appearing (no sign meeting clinical-illness or equivocal criteria)');
     expect(text).toContain('Re-check: run again if any sign lasts 2 h continuously');
   });
@@ -109,7 +109,7 @@ describe('summaryText', () => {
     const a: Answers = { gaWeeks: 34 };
     const text = summaryText(a, recommend(a, 0.5), now, 0.5);
     expect(text).toContain('GA <35 wk | Category: Out of scope (GA below 35 wk)');
-    expect(text).not.toContain('Signs continuous');
+    expect(text).not.toContain('Signs present');
     expect(text).toContain('Action (KCMH CPG): not covered (GA <35 wk); clinical judgement, discuss with staff');
   });
 
@@ -123,7 +123,7 @@ describe('summaryText', () => {
     const a: Answers = { ...noIllness, equivParams: ['resp'], oneParamGe4h: false, fever: 'none', iapIndications: [] };
     const text = summaryText(a, recommend(a, 0.5), now, 0.5);
     expect(text).toContain('Category: Well-appearing (one sign, continuous for less than 4 h)');
-    expect(text).toContain('Signs continuous ≥2 h since delivery room: grunting/flaring/retraction without O2 (not yet 4 h)');
+    expect(text).toContain('Signs present at assessment, continuous ≥2 h: grunting/flaring/retraction without O2 (not yet 4 h)');
     expect(text).toContain('CPG path: no fever, no GBS IAP indication');
     expect(text).toContain('Action (KCMH CPG): routine care');
     expect(text).toContain('Re-check: run again if the sign lasts 4 h continuously');
