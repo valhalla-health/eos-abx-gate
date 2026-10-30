@@ -48,7 +48,9 @@ monthly chart audit (section 7). The page itself stores nothing, so it cannot me
 ## 2. Architecture
 
 Static site: Vite + TypeScript, no UI framework, built to `dist/` and served as Cloudflare Workers
-static assets. Workers Builds deploys on every merge into `main`, the same route NeoRef uses.
+static assets. Workers Builds deploys on every merge into `main`, the same route NeoRef uses. Other
+branches get a preview through `npx wrangler preview`, which needs the empty `previews` block in
+`wrangler.jsonc`.
 
 Four tiers. Clinical rules live only in Business Logic.
 

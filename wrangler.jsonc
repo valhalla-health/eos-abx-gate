@@ -2,5 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "eos-abx-gate",
   "compatibility_date": "2026-10-01",
-  "assets": { "directory": "./dist" }
+  "assets": { "directory": "./dist" },
+  // `wrangler preview` (the Workers Builds preview command) refuses to run without this block.
+  "previews": {}
 }
