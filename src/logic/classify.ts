@@ -45,7 +45,8 @@ export function classify(a: Answers): Classification {
   const rechecks: Recheck[] = [];
   if (o2Counts(a) && a.o2Ge2h === false) rechecks.push('o2At2h');
 
-  // Every ticked sign was continuous for 2 h or more; intermittent time is not added (Pp, 2026-10-29).
+  // Every ticked sign is present at assessment and was continuous for 2 h or more; intermittent time
+  // is not added (Pp, 2026-10-29 and 2026-10-30).
   const n = effectiveParams(a).length;
   if (n >= 2) return { category: 'equivocal', reason: 'twoParams2h', rechecks };
   if (n === 1 && a.oneParamGe4h === true) return { category: 'equivocal', reason: 'oneParam4h', rechecks };

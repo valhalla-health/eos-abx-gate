@@ -72,9 +72,9 @@ describe('classify', () => {
     });
   });
 
-  // The screen asks about the time since the delivery room, so a sign that lasted 4 h without a
-  // break and has resolved is still ticked, and still counts.
-  it('a sign that lasted 4 h continuously and has resolved is equivocal', () => {
+  // The screen asks for signs still present at assessment (Pp, 2026-10-30), so a ticked sign is
+  // ongoing; one that has lasted 4 h without a break counts.
+  it('a sign present at assessment and continuous for 4 h is equivocal', () => {
     expect(classify({ ...base, equivParams: ['hr'], oneParamGe4h: true }).reason).toBe('oneParam4h');
   });
 

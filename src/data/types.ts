@@ -27,7 +27,7 @@ export interface Answers {
   poorFeedingStaffChecked?: boolean;
   lethargy?: boolean;
   lethargyStaffChecked?: boolean;
-  equivParams?: EquivParam[]; // only signs continuous for 2 h or more (SRS 4.1)
+  equivParams?: EquivParam[]; // only signs present at assessment and continuous for 2 h or more (SRS 4.1)
   oneParamGe4h?: boolean; // asked only when one sign is ticked
   gaDays?: number | null; // null = unknown
   tmaxC?: number | null; // null = no value recorded

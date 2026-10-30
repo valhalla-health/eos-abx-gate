@@ -1,20 +1,20 @@
 import { expect, test, type Page } from '@playwright/test';
 import { check, headline, noClinicalIllness, openWhy, start, summary, tap } from './helpers';
 
-// The signs screen lists only signs continuous for 2 h or more; intermittent time does not count
-// (Pp, 2026-10-29; SRS 4.1).
+// The signs screen lists only signs still present at assessment and continuous for 2 h or more;
+// intermittent or resolved signs do not count (Pp, 2026-10-29 and 2026-10-30; SRS 4.1).
 test('1. mild grunting on room air for 1 h is not yet a sign: none ticked, well, 2 h re-check', async ({ page }) => {
   await start(page, '38 wk');
   await noClinicalIllness(page);
-  await expect(headline(page)).toHaveText('ตั้งแต่ออกจากห้องคลอด มีข้อไหนเป็นต่อเนื่องนาน 2 ชม. ขึ้นไป');
-  await expect(page.getByText('เลือกได้หลายข้อ เป็น ๆ หาย ๆ ไม่นับ')).toBeVisible();
+  await expect(headline(page)).toHaveText('ตอนประเมิน มีข้อไหนที่ยังเป็นอยู่ และเป็นต่อเนื่องมา 2 ชม. ขึ้นไป');
+  await expect(page.getByText('เลือกได้หลายข้อ หายไปแล้วหรือเป็น ๆ หาย ๆ ไม่นับ')).toBeVisible();
   await tap(page, 'ไม่มีเลย');
   await tap(page, 'ไม่มีไข้');
   await tap(page, 'ไม่มีเลย');
   await expect(headline(page)).toHaveText('ไม่ให้ ABX');
   await expect(page.getByText('ถ้ามีอาการผิดปกติต่อเนื่องครบ 2 ชม. ให้เปิดหน้านี้ใหม่')).toBeVisible();
   await expect(summary(page)).toContainText('Category: Well-appearing (no sign meeting clinical-illness or equivocal criteria)');
-  await expect(summary(page)).toContainText('Signs continuous ≥2 h since delivery room: none');
+  await expect(summary(page)).toContainText('Signs present at assessment, continuous ≥2 h: none');
   await expect(summary(page)).toContainText('Action (KCMH CPG): routine care');
   await expect(summary(page)).toContainText('Re-check: run again if any sign lasts 2 h continuously');
 });
@@ -34,7 +34,7 @@ test('1b. one sign continuous for 3 h, not yet 4 h: well, 4 h re-check', async (
     page.getByText('ถ้าอาการนี้ต่อเนื่องครบ 4 ชม. หรือมีอาการอีกข้อต่อเนื่องครบ 2 ชม. ให้เปิดหน้านี้ใหม่'),
   ).toBeVisible();
   await expect(summary(page)).toContainText('Category: Well-appearing (one sign, continuous for less than 4 h)');
-  await expect(summary(page)).toContainText('Signs continuous ≥2 h since delivery room: RR ≥60 (not yet 4 h)');
+  await expect(summary(page)).toContainText('Signs present at assessment, continuous ≥2 h: RR ≥60 (not yet 4 h)');
   await expect(summary(page)).toContainText(
     'Re-check: run again if the sign lasts 4 h continuously or a second sign lasts 2 h continuously',
   );
@@ -57,7 +57,7 @@ test('1c. one sign continuous for 4 h, low-risk mother: equivocal, Kaiser, no an
   await tap(page, 'ไม่ได้');
   await expect(headline(page)).toHaveText('ยังไม่ให้ ABX');
   await expect(summary(page)).toContainText('Category: Equivocal (one sign continuous for 4 h or more)');
-  await expect(summary(page)).toContainText('Signs continuous ≥2 h since delivery room: HR ≥160 (reached 4 h)');
+  await expect(summary(page)).toContainText('Signs present at assessment, continuous ≥2 h: HR ≥160 (reached 4 h)');
   await expect(summary(page)).toContainText('at birth 0.29/1000, after exam 1.06/1000');
 });
 

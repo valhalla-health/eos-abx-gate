@@ -70,11 +70,13 @@ export const QUESTIONS: Record<AnswerKey, QuestionDef> = {
     title: 'staff มาดูเองแล้วเห็นว่าซึมหรือกระสับกระส่ายจริงไหม',
     options: yesNo('staff ดูแล้ว เห็นด้วย', 'ยัง'),
   },
-  // Only continuous time counts, so a sign is ticked only once it has lasted 2 h (Pp, 2026-10-29).
+  // Only continuous time counts, so a sign is ticked only once it has lasted 2 h (Pp, 2026-10-29),
+  // and only while it is still present at assessment (Pp, 2026-10-30). O₂ and CPAP above still count
+  // since the delivery room.
   equivParams: {
     kind: 'multi',
-    title: 'ตั้งแต่ออกจากห้องคลอด มีข้อไหนเป็นต่อเนื่องนาน 2 ชม. ขึ้นไป',
-    hint: 'เลือกได้หลายข้อ เป็น ๆ หาย ๆ ไม่นับ',
+    title: 'ตอนประเมิน มีข้อไหนที่ยังเป็นอยู่ และเป็นต่อเนื่องมา 2 ชม. ขึ้นไป',
+    hint: 'เลือกได้หลายข้อ หายไปแล้วหรือเป็น ๆ หาย ๆ ไม่นับ',
     options: [
       { label: 'HR 160 ขึ้นไป', value: 'hr' },
       { label: 'RR 60 ขึ้นไป', value: 'rr' },
