@@ -1,0 +1,151 @@
+{
+  "source": "https://neonatalsepsiscalculator.kaiserpermanente.org/ (Updated 2024 version, incidence 0.50/1000)",
+  "units": "tempF cases were entered on the site in Fahrenheit; tempC cases (c21-c24) were entered in Celsius with the site's unit select set to C",
+  "incidencePer1000": 0.5,
+  "cases": [
+    {
+      "id": "c01",
+      "recorded": "2026-10-29",
+      "gaWeeks": 40, "gaDays": 0, "tempF": 98.6, "romHours": 10, "gbs": "neg", "siteAbx": "none",
+      "site": { "atBirth": 0.29, "well": 0.10, "equivocal": 1.06, "clinicalIllness": 4.20 }
+    },
+    {
+      "id": "c02",
+      "recorded": "2026-10-29",
+      "gaWeeks": 36, "gaDays": 0, "tempF": 100.4, "romHours": 18, "gbs": "unk", "siteAbx": "none",
+      "site": { "atBirth": 12.98, "well": 4.71, "equivocal": 45.79, "clinicalIllness": 160.12 }
+    },
+    {
+      "id": "c03",
+      "recorded": "2026-10-29",
+      "gaWeeks": 39, "gaDays": 3, "tempF": 99.0, "romHours": 20, "gbs": "pos", "siteAbx": "gbs2",
+      "site": { "atBirth": 0.16, "well": 0.06, "equivocal": 0.57, "clinicalIllness": 2.27 }
+    },
+    {
+      "id": "c04",
+      "recorded": "2026-10-29",
+      "gaWeeks": 39, "gaDays": 3, "tempF": 99.0, "romHours": 20, "gbs": "pos", "siteAbx": "none",
+      "site": { "atBirth": 1.32, "well": 0.48, "equivocal": 4.80, "clinicalIllness": 18.80 }
+    },
+    {
+      "id": "c05",
+      "recorded": "2026-10-29",
+      "gaWeeks": 38, "gaDays": 0, "tempF": 100.8, "romHours": 6, "gbs": "unk", "siteAbx": "none",
+      "site": { "atBirth": 5.64, "well": 2.04, "equivocal": 20.27, "clinicalIllness": 75.95 }
+    },
+    {
+      "id": "c06",
+      "recorded": "2026-10-29",
+      "gaWeeks": 38, "gaDays": 0, "tempF": 100.8, "romHours": 6, "gbs": "unk", "siteAbx": "broad4",
+      "site": { "atBirth": 0.55, "well": 0.20, "equivocal": 1.99, "clinicalIllness": 7.86 }
+    },
+    {
+      "id": "c07",
+      "recorded": "2026-10-29",
+      "gaWeeks": 37, "gaDays": 1, "tempF": 99.5, "romHours": 24, "gbs": "neg", "siteAbx": "broad2to4",
+      "site": { "atBirth": 0.14, "well": 0.05, "equivocal": 0.51, "clinicalIllness": 2.03 }
+    },
+    {
+      "id": "c08",
+      "recorded": "2026-10-29",
+      "gaWeeks": 36, "gaDays": 5, "tempF": 98.6, "romHours": 2, "gbs": "pos", "siteAbx": "none",
+      "site": { "atBirth": 0.98, "well": 0.35, "equivocal": 3.56, "clinicalIllness": 13.99 }
+    },
+    {
+      "id": "c09",
+      "recorded": "2026-10-29",
+      "gaWeeks": 35, "gaDays": 0, "tempF": 98.6, "romHours": 0, "gbs": "neg", "siteAbx": "none",
+      "site": { "atBirth": 0.65, "well": 0.23, "equivocal": 2.37, "clinicalIllness": 9.33 }
+    },
+    {
+      "id": "c10",
+      "recorded": "2026-10-29",
+      "gaWeeks": 35, "gaDays": 4, "tempF": 102.2, "romHours": 30, "gbs": "pos", "siteAbx": "broad4",
+      "site": { "atBirth": 8.20, "well": 2.97, "equivocal": 29.29, "clinicalIllness": 107.03 }
+    },
+    {
+      "id": "c11",
+      "recorded": "2026-10-29",
+      "gaWeeks": 41, "gaDays": 2, "tempF": 100.0, "romHours": 12, "gbs": "neg", "siteAbx": "none",
+      "site": { "atBirth": 1.44, "well": 0.52, "equivocal": 5.24, "clinicalIllness": 20.49 }
+    },
+    {
+      "id": "c12",
+      "recorded": "2026-10-29",
+      "gaWeeks": 42, "gaDays": 0, "tempF": 102.0, "romHours": 48, "gbs": "unk", "siteAbx": "gbs2",
+      "site": { "atBirth": 6.45, "well": 2.33, "equivocal": 23.14, "clinicalIllness": 86.01 }
+    },
+    {
+      "id": "c13",
+      "recorded": "2026-10-29",
+      "gaWeeks": 40, "gaDays": 6, "tempF": 98.2, "romHours": 1, "gbs": "neg", "siteAbx": "none",
+      "site": { "atBirth": 0.15, "well": 0.06, "equivocal": 0.56, "clinicalIllness": 2.22 }
+    },
+    {
+      "id": "c14",
+      "recorded": "2026-10-29",
+      "gaWeeks": 37, "gaDays": 0, "tempF": 101.1, "romHours": 15, "gbs": "pos", "siteAbx": "gbs2",
+      "site": { "atBirth": 1.39, "well": 0.50, "equivocal": 5.07, "clinicalIllness": 19.85 }
+    },
+    {
+      "id": "c15",
+      "recorded": "2026-10-29",
+      "gaWeeks": 38, "gaDays": 5, "tempF": 99.1, "romHours": 36, "gbs": "neg", "siteAbx": "none",
+      "site": { "atBirth": 0.64, "well": 0.23, "equivocal": 2.35, "clinicalIllness": 9.25 }
+    },
+    {
+      "id": "c16",
+      "recorded": "2026-10-29",
+      "gaWeeks": 39, "gaDays": 0, "tempF": 101.7, "romHours": 8, "gbs": "pos", "siteAbx": "none",
+      "site": { "atBirth": 10.04, "well": 3.64, "equivocal": 35.69, "clinicalIllness": 128.18 }
+    },
+    {
+      "id": "c17",
+      "recorded": "2026-10-29",
+      "gaWeeks": 36, "gaDays": 3, "tempF": 99.7, "romHours": 26, "gbs": "unk", "siteAbx": "broad2to4",
+      "site": { "atBirth": 0.75, "well": 0.27, "equivocal": 2.73, "clinicalIllness": 10.75 }
+    },
+    {
+      "id": "c18",
+      "recorded": "2026-10-29",
+      "gaWeeks": 40, "gaDays": 2, "tempF": 100.6, "romHours": 19, "gbs": "pos", "siteAbx": "none",
+      "site": { "atBirth": 5.62, "well": 2.03, "equivocal": 20.20, "clinicalIllness": 75.69 }
+    },
+    {
+      "id": "c19",
+      "recorded": "2026-10-29",
+      "gaWeeks": 35, "gaDays": 6, "tempF": 98.8, "romHours": 72, "gbs": "neg", "siteAbx": "gbs2",
+      "site": { "atBirth": 0.23, "well": 0.08, "equivocal": 0.84, "clinicalIllness": 3.33 }
+    },
+    {
+      "id": "c20",
+      "recorded": "2026-10-29",
+      "gaWeeks": 41, "gaDays": 0, "tempF": 100.4, "romHours": 4, "gbs": "unk", "siteAbx": "broad2to4",
+      "site": { "atBirth": 0.51, "well": 0.18, "equivocal": 1.86, "clinicalIllness": 7.33 }
+    },
+    {
+      "id": "c21",
+      "recorded": "2026-10-29",
+      "gaWeeks": 40, "gaDays": 0, "tempC": 38.2, "romHours": 10, "gbs": "neg", "siteAbx": "none",
+      "site": { "atBirth": 1.83, "well": 0.66, "equivocal": 6.64, "clinicalIllness": 25.89 }
+    },
+    {
+      "id": "c22",
+      "recorded": "2026-10-29",
+      "gaWeeks": 38, "gaDays": 0, "tempC": 38.3, "romHours": 6, "gbs": "unk", "siteAbx": "none",
+      "site": { "atBirth": 6.35, "well": 2.29, "equivocal": 22.78, "clinicalIllness": 84.75 }
+    },
+    {
+      "id": "c23",
+      "recorded": "2026-10-29",
+      "gaWeeks": 35, "gaDays": 4, "tempC": 39.1, "romHours": 30, "gbs": "pos", "siteAbx": "broad4",
+      "site": { "atBirth": 9.54, "well": 3.46, "equivocal": 33.98, "clinicalIllness": 122.59 }
+    },
+    {
+      "id": "c24",
+      "recorded": "2026-10-29",
+      "gaWeeks": 40, "gaDays": 6, "tempC": 36.9, "romHours": 1, "gbs": "neg", "siteAbx": "none",
+      "site": { "atBirth": 0.19, "well": 0.07, "equivocal": 0.68, "clinicalIllness": 2.68 }
+    }
+  ]
+}

@@ -1,0 +1,452 @@
+/* EOS ABX Gate: light orange on a warm near-white page (Pp, 2026-10-29).
+
+   The method is NeoFeed's (NeoFeed.html :root): oklch tokens, text tiers checked by WCAG ratio
+   rather than by eye, white cards on a tinted page, one focus ring, 1.5px borders, radii 6/10/14/20,
+   and light only. The colours are not NeoFeed's, except the three severity triads below.
+
+   The brand orange is chrome and buttons only. It never carries severity: the result banner takes
+   crit, warn, ok or neutral from logic/tone.ts, and its headline always says the action in words.
+
+   Ratios are WCAG 2 contrast in sRGB; colours outside sRGB were gamut-mapped by lowering chroma. */
+:root {
+  /* surfaces: warm near-white page, white cards, warm-neutral lines */
+  --bg: oklch(98.5% 0.01 70); /* #fff9f3 */
+  --bg-2: oklch(96.5% 0.014 70);
+  --surface: #ffffff;
+  --line: oklch(87% 0.02 65); /* card border, 1.49:1 on white */
+  --line-2: oklch(93% 0.012 65); /* inner rules */
+
+  /* ink: warm charcoal */
+  --ink: oklch(25% 0.02 50); /* 16.1:1 on white, 15.4:1 on --bg */
+  --ink-2: oklch(40% 0.02 50); /* 9.3:1 on white, 8.9:1 on --bg */
+  --ink-3: oklch(52% 0.018 55); /* 5.5:1 on white, 5.0:1 on --bg-2 */
+
+  /* brand: soft orange */
+  --brand: oklch(70% 0.13 55); /* border of primary and selected cards; never text (2.8:1 on white) */
+  --brand-fill: oklch(80% 0.11 62); /* primary button */
+  --brand-fill-2: oklch(76% 0.12 60); /* primary pressed */
+  --brand-ink: oklch(30% 0.06 45); /* text on the primary: 7.3:1 on --brand-fill, 6.3:1 pressed */
+  --brand-text: oklch(48% 0.12 48); /* orange text on light grounds: 6.9:1 on white, 6.6:1 on --bg */
+  --brand-strong: oklch(56% 0.145 48); /* focus outline, checkbox tick: 4.9:1 on white */
+  --brand-bg: oklch(95% 0.03 65); /* selected or pressed card; --ink on it 13.8:1 */
+
+  /* severity: NeoFeed's triads, unchanged, so a colour means what the ward already reads there */
+  --crit: oklch(54% 0.2 22);
+  --crit-bg: oklch(96.5% 0.03 22);
+  --crit-line: oklch(85% 0.08 22);
+  --crit-ink: oklch(44% 0.16 22); /* 7.6:1 on --crit-bg */
+  --warn: oklch(63% 0.16 65);
+  --warn-bg: oklch(96.5% 0.04 75);
+  --warn-line: oklch(86% 0.1 70);
+  --warn-ink: oklch(45% 0.13 65); /* 6.9:1 on --warn-bg */
+  --ok: oklch(52% 0.15 148);
+  --ok-bg: oklch(96.5% 0.045 150);
+  --ok-line: oklch(82% 0.12 150);
+  --ok-ink: oklch(42% 0.12 148); /* 7.4:1 on --ok-bg */
+  /* neutral: no recommendation (consult staff, out of scope) */
+  --neutral: oklch(55% 0.02 55);
+  --neutral-bg: oklch(96% 0.008 60);
+  --neutral-line: oklch(85% 0.012 60);
+  --neutral-ink: var(--ink); /* 14.3:1 on --neutral-bg */
+
+  --r-sm: 6px;
+  --r: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+  /* Shadows carry the warm hue: a grey shadow reads as dirt on a warm page. */
+  --shadow-card: 0 1px 0 oklch(92% 0.012 65 / 0.55), 0 1px 2px oklch(25% 0.02 50 / 0.05);
+  --shadow-pop: 0 2px 0 oklch(62% 0.12 52 / 0.35), 0 4px 12px oklch(70% 0.13 55 / 0.22);
+  --ring: 0 0 0 3px oklch(56% 0.145 48 / 0.2);
+
+  /* Until main.ts adds .fonts after the load event, the page uses the phone's own Thai font. */
+  --system: 'Leelawadee UI', 'Thonburi', 'Noto Sans Thai', system-ui, sans-serif;
+  --sans: var(--system);
+  --mono: ui-monospace, monospace;
+}
+:root.fonts {
+  --sans: 'IBM Plex Sans Thai', var(--system);
+  --mono: 'IBM Plex Mono', 'IBM Plex Sans Thai', ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  border-top: 4px solid var(--brand);
+}
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px 16px 24px;
+}
+h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 10px 0 16px;
+}
+/* The h1 takes focus only so a screen reader starts at the new screen; it is not a control. */
+h1:focus {
+  outline: none;
+}
+p {
+  margin: 0 0 12px;
+}
+.num {
+  font-family: var(--mono);
+  font-size: 0.94em;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+:where(button, a, summary, input):focus-visible {
+  outline: 2px solid var(--brand-strong);
+  outline-offset: 2px;
+}
+
+/* Answer buttons are white cards. */
+button {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  margin: 10px 0;
+  padding: 12px 16px;
+  font: inherit;
+  text-align: left;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.12s, border-color 0.12s;
+}
+button:active {
+  background: var(--brand-bg);
+  border-color: var(--brand);
+}
+@media (hover: hover) {
+  button:hover {
+    border-color: var(--brand);
+  }
+}
+button.primary {
+  min-height: 54px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--brand-ink);
+  background: var(--brand-fill);
+  border-color: var(--brand);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-pop);
+}
+button.primary:active {
+  background: var(--brand-fill-2);
+}
+/* Small and text-like, but still a 48px target. */
+button.quiet {
+  min-height: 48px;
+  margin: 6px 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--brand-text);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+button.quiet:active {
+  background: var(--brand-bg);
+}
+/* The 300 ms arming guard disables every control too, but nothing should look disabled for it. */
+button:disabled:not(.arming) {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+.nav button {
+  flex: 1;
+  min-height: 48px;
+  margin: 0;
+  text-align: center;
+  color: var(--ink-2);
+  background: transparent;
+  box-shadow: none;
+  border-radius: var(--r);
+}
+
+/* Multi-select rows and the override reasons: the same card, filled when ticked. */
+label.check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  min-height: 52px;
+  padding: 13px 14px;
+  margin: 10px 0;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
+label.check:has(input:checked) {
+  background: var(--brand-bg);
+  border-color: var(--brand);
+}
+label.check input {
+  width: 22px;
+  height: 22px;
+  margin: 2px 0 0;
+  flex: none;
+  accent-color: var(--brand-strong);
+}
+
+.number {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.number span {
+  font-weight: 600;
+  color: var(--ink-2);
+}
+input[type='text'] {
+  width: 100%;
+  min-height: 52px;
+  margin: 6px 0;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r);
+}
+input[type='text']:focus {
+  outline: none;
+  border-color: var(--brand-strong);
+  box-shadow: var(--ring);
+}
+.number input {
+  font-family: var(--mono);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.hint {
+  color: var(--ink-2);
+  margin: -6px 0 14px;
+}
+.sign {
+  font-weight: 600;
+  margin: -6px 0 14px;
+}
+.error {
+  color: var(--crit-ink);
+  min-height: 1.55em;
+  margin: 4px 0;
+}
+
+/* A closed list behind a summary line: the broad-spectrum drugs, the reasons and the note. */
+details {
+  margin: 6px 0 14px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+}
+summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 14px;
+  font-weight: 600;
+  color: var(--brand-text);
+  cursor: pointer;
+  list-style: none;
+  border-radius: 12px;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::after {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px 4px auto;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+details[open] summary::after {
+  margin-bottom: -4px;
+  transform: rotate(-135deg);
+}
+.more {
+  padding: 0 14px 14px;
+}
+.more ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.more li {
+  padding: 10px 0;
+  border-top: 1px solid var(--line-2);
+}
+.more p {
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 3px 12px;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.start h1 {
+  font-size: 1.75rem;
+  margin: 18px 0 10px;
+}
+.start p {
+  color: var(--ink-2);
+}
+.start button.primary {
+  min-height: 60px;
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+/* The result banner: the screen's h1 and one line, coloured by tone. */
+.banner {
+  margin: 10px 0 14px;
+  padding: 16px 16px 16px 18px;
+  background: var(--tone-bg);
+  border: 1.5px solid var(--tone-line);
+  border-left: 8px solid var(--tone);
+  border-radius: var(--r-lg);
+}
+.banner h1 {
+  margin: 0 0 4px;
+  font-size: 2rem;
+  line-height: 1.3;
+  color: var(--tone-ink);
+}
+.banner p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+/* Each step moves to the next line whole; one longer than the line still wraps inside itself. */
+.banner .step {
+  display: inline-block;
+}
+.tone-crit {
+  --tone: var(--crit);
+  --tone-bg: var(--crit-bg);
+  --tone-line: var(--crit-line);
+  --tone-ink: var(--crit-ink);
+}
+.tone-warn {
+  --tone: var(--warn);
+  --tone-bg: var(--warn-bg);
+  --tone-line: var(--warn-line);
+  --tone-ink: var(--warn-ink);
+}
+.tone-ok {
+  --tone: var(--ok);
+  --tone-bg: var(--ok-bg);
+  --tone-line: var(--ok-line);
+  --tone-ink: var(--ok-ink);
+}
+.tone-neutral {
+  --tone: var(--neutral);
+  --tone-bg: var(--neutral-bg);
+  --tone-line: var(--neutral-line);
+  --tone-ink: var(--neutral-ink);
+}
+.recheck {
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.status {
+  min-height: 1.3em;
+  margin: -4px 0 2px;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  text-align: center;
+}
+.kaiser {
+  padding: 10px 0;
+  border-top: 1px solid var(--line-2);
+}
+.kaiser p {
+  padding: 0;
+  border: 0;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+.kaiser dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 2px 16px;
+  margin: 4px 0 0;
+}
+.kaiser dd {
+  margin: 0;
+}
+pre {
+  margin: 10px 0 0;
+  padding: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 500 0.78rem/1.55 var(--mono);
+  color: var(--ink);
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-sm);
+}
+
+footer {
+  margin-top: 28px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-2);
+  font-size: 0.8rem;
+  color: var(--ink-3);
+}
+footer a {
+  color: inherit;
+  text-underline-offset: 2px;
+}
+footer .item {
+  display: inline-block;
+}

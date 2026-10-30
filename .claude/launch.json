@@ -1,0 +1,1 @@
+{ "version": "0.0.1", "configurations": [ { "name": "eos-abx-gate", "runtimeExecutable": "npm", "runtimeArgs": ["run", "preview", "--", "--host", "127.0.0.1", "--port", "4173", "--strictPort"], "port": 4173 } ] }
