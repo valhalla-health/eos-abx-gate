@@ -5,7 +5,7 @@ sepsis at KCMH. It follows the KCMH EOS CPG and runs the Kaiser Permanente 2024 
 equivocal babies. It stores nothing and sends nothing.
 
 - Spec: `docs/SRS.md`
-- Live: https://eos-abx-gate.valhalla-health.workers.dev (after deploy)
+- Live: https://eos-abx-gate.valhalla-health.workers.dev
 - Definitions: draft 2026-10-29, not yet agreed by the NICU team
 
 ## Run
